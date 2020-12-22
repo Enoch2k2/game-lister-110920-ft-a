@@ -70,6 +70,8 @@ DELETE ROUTE
 
 ## What is the Sinatra Flow?
 
+Request -> Controller -> Query / Insert database -> redirect / render
+
 ## Models
 
 ## Game
