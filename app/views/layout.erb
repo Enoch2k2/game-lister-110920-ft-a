@@ -10,20 +10,31 @@
     <title>GameLister</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <nav class="indigo darken-3">
+      <div class="nav-wrapper container">
+        <a href="/" class="brand-logo">Game Lister</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Signup</a></li>
+          <li><a href="#">Logout</a></li>
+          <li><a href="/games">Games</a></li>
+          <li><a href="/games/new">Create Game</a></li>
+        </ul>
+      </div>
+    </nav>
 
-        <%= yield %>
-
-      <footer class="branding">
-        <small>&copy; 2020 <strong>GameLister</strong></small>
-      </footer>
+    <div class="container">
+      <%= yield %>
     </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>
       <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
       <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
