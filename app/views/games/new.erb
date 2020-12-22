@@ -1,0 +1,25 @@
+<h2 class="indigo-text darken-3">Create Game</h2>
+
+<form action="/games" method="post">
+  <div class="input-field">
+    <input id="title" name="game[title]" type="text" class="validate">
+    <label for="title">Title</label>
+  </div>
+  <div class="input-field">
+    <input type="text" class="datepicker" name="game[release_date]" id="release_date">
+    <label for="release_date">Release Date</label>
+  </div>
+  <div class="input-field">
+    <input id="genre" name="game[genre]" type="text" class="validate">
+    <label for="genre">Genre</label>
+  </div>
+
+  <input type="submit" value="Create Game" class="btn indigo darken-3">
+</form>
+
+
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>
