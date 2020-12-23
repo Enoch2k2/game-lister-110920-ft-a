@@ -1,0 +1,26 @@
+<h2 class="indigo-text darken-3">Edit <%= @game.title %></h2>
+
+<form action="/games/<%= @game.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="input-field">
+    <input id="title" name="game[title]" type="text" class="validate" value="<%= @game.title %>">
+    <label for="title">Title</label>
+  </div>
+  <div class="input-field">
+    <input type="text" class="datepicker" name="game[release_date]" id="release_date" value="<%= @game.release_date %>">
+    <label for="release_date">Release Date</label>
+  </div>
+  <div class="input-field">
+    <input id="genre" name="game[genre]" type="text" class="validate" value="<%= @game.genre %>">
+    <label for="genre">Genre</label>
+  </div>
+
+  <input type="submit" value="Update Game" class="btn indigo darken-3">
+</form>
+
+
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>

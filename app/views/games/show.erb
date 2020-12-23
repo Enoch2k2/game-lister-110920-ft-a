@@ -1,3 +1,10 @@
-<h3><%= @game.title %></h3>
+<h3 class="indigo-text text-darken-3"><%= @game.title %></h3>
 <p>Release Date: <%= @game.release_date %></p>
 <p>Genre: <%= @game.genre %></p>
+
+
+<form action="/games/<%= @game.id %>" method="post">
+  <a href="/games/<%= @game.id %>/edit" class="btn-small">Edit</a>  
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Game" class="btn-small red white-text">
+</form>
