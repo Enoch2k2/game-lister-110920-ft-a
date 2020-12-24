@@ -22,11 +22,14 @@
       <div class="nav-wrapper container">
         <a href="/" class="brand-logo">Game Lister</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Signup</a></li>
-          <li><a href="#">Logout</a></li>
-          <li><a href="/games">Games</a></li>
-          <li><a href="/games/new">Create Game</a></li>
+          <% if !is_logged_in? %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+          <% else %>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/games">Games</a></li>
+            <li><a href="/games/new">Create Game</a></li>
+          <% end %>
         </ul>
       </div>
     </nav>
