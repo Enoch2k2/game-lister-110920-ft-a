@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   get '/games' do
     @games = Game.all
+    @game = Game.find_by_id(session[:game_id])
     erb :'games/index'
   end
 
@@ -10,6 +11,7 @@ class GamesController < ApplicationController
   
   get '/games/:id' do
     find_game
+    session[:game_id] = @game.id if @game
     redirect_if_game_not_found
     erb :'games/show'
   end
