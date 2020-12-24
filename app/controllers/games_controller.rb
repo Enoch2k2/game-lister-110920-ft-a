@@ -1,30 +1,35 @@
 class GamesController < ApplicationController
   get '/games' do
-    @games = Game.all
+    redirect_if_not_logged_in
+    @games = current_user.games
     @game = Game.find_by_id(session[:game_id])
     erb :'games/index'
   end
 
   get '/games/new' do
+    redirect_if_not_logged_in
     erb :'games/new'
   end
   
   get '/games/:id' do
+    redirect_if_not_logged_in
     find_game
+    redirect_if_not_owner
     session[:game_id] = @game.id if @game
     redirect_if_game_not_found
     erb :'games/show'
   end
   
   get '/games/:id/edit' do
+    redirect_if_not_logged_in
     find_game
     redirect_if_game_not_found
+    redirect_if_not_owner
     erb :'games/edit'
   end
   
   post '/games' do
-    game = Game.new(params[:game])
-    
+    game = current_user.games.build(params[:game])
     if game.save
       redirect '/games'
     else
@@ -44,7 +49,9 @@ class GamesController < ApplicationController
   
   delete '/games/:id' do
     find_game
-    @game.destroy if @game
+    redirect_if_game_not_found
+    redirect_if_not_owner
+    @game.destroy
     redirect "/games"
   end
   
@@ -55,5 +62,9 @@ class GamesController < ApplicationController
   
   def redirect_if_game_not_found
     redirect "/games" unless @game
+  end
+
+  def redirect_if_not_owner
+    redirect "/games" unless @game.user == current_user
   end
 end

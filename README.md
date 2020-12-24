@@ -79,3 +79,14 @@ Request -> Controller -> Query / Insert database -> redirect / render (erb line)
 - title
 - release_date
 - genre
+
+belong to a user
+
+## User
+
+- username / email
+- password_digest (encrypted (bcrypt))
+
+has many games
+
+## Sessions (cookies (not choc chip))
