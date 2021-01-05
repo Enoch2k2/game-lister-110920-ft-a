@@ -1,7 +1,12 @@
 class GamesController < ApplicationController
   get '/games' do
     redirect_if_not_logged_in
-    @games = current_user.games
+    if params[:query] # only exist if search is filled out
+      # search for games based on query
+      @games = current_user.games.search(params[:query])
+    else # search is not filled out so show all games
+      @games = current_user.games
+    end
     @game = Game.find_by_id(session[:game_id])
     erb :'games/index'
   end
@@ -33,6 +38,7 @@ class GamesController < ApplicationController
     if game.save
       redirect '/games'
     else
+      flash[:errors] = game.errors.full_messages
       redirect '/games/new'
     end
   end

@@ -1,5 +1,14 @@
 <h3 class="indigo-text text-darken-3">Game List</h3>
 
+<form action="/games" method="get">
+  <div class="row" style="margin-bottom: 0;">
+    <div class="col s5 input-field" style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
+      <input type="text" name="query" id="query" placeholder="Enter Query">
+    </div>
+  </div>
+  <input type="submit" value="Search" class="btn">
+</form>
+
 <p>Recently Viewed: <%= @game ? @game.title : "Haven't viewed any games." %></p>
 
 <ul>
