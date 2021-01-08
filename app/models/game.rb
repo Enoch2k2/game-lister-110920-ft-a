@@ -14,4 +14,12 @@ class Game < ActiveRecord::Base
   def self.alphabetize
     order(title: :asc)
   end
+
+  def self.by_genre(genre)
+    where(genre: genre)
+  end
+
+  def self.all_genres
+    self.pluck(:genre).uniq
+  end
 end

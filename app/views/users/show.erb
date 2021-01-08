@@ -1,0 +1,6 @@
+<h3 class="indigo-text darken-3">Welcome, <%= @user.username %></h3>
+
+<p>List of user's games</p>
+<% @user.games.each do |game| %>
+  <p><%= game.title %></p>
+<% end %>

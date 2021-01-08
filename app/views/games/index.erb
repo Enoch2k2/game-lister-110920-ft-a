@@ -6,7 +6,19 @@
       <input type="text" name="query" id="query" placeholder="Enter Query">
     </div>
   </div>
-  <input type="submit" value="Search" class="btn">
+  <input type="submit" value="Search" class="btn indigo darken-3">
+</form>
+
+<form action="/games" method="get">
+  <div class="input-field">
+    <select name="filter">
+      <option value="" disabled selected>Filter By Genre</option>
+      <% Game.all_genres.each do |genre| %>
+        <option value="<%= genre %>"><%= genre %></option>
+      <% end %>
+    </select>
+  </div>
+  <input type="submit" value="Filter" class="btn indigo darken-3">
 </form>
 
 <p>Recently Viewed: <%= @game ? @game.title : "Haven't viewed any games." %></p>
@@ -16,3 +28,9 @@
     <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
   <% end %>
 </ul>
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>

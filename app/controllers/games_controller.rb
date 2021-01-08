@@ -4,6 +4,9 @@ class GamesController < ApplicationController
     if params[:query] # only exist if search is filled out
       # search for games based on query
       @games = current_user.games.search(params[:query])
+    elsif params[:filter]
+      # @games = list of games that are filtered by genre
+      @games = current_user.games.by_genre(params[:filter]).alphabetize
     else # search is not filled out so show all games
       @games = current_user.games.alphabetize
     end
