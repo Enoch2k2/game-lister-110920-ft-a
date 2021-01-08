@@ -5,7 +5,7 @@ class GamesController < ApplicationController
       # search for games based on query
       @games = current_user.games.search(params[:query])
     else # search is not filled out so show all games
-      @games = current_user.games
+      @games = current_user.games.alphabetize
     end
     @game = Game.find_by_id(session[:game_id])
     erb :'games/index'

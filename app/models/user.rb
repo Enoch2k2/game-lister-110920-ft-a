@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   # def search_games(query)
   #   self.games.where("title LIKE ?", "%#{query}%")
   # end
+
+ 
 end

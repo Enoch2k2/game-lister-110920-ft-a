@@ -7,4 +7,8 @@ class Game < ActiveRecord::Base
   def self.search(query)
     where("title LIKE ?", "%#{query}%")
   end
+
+  def self.alphabetize
+    order(title: :asc)
+  end
 end
