@@ -34,12 +34,23 @@ class GamesController < ApplicationController
   end
   
   post '/games' do
-    game = current_user.games.build(params[:game])
+    game = Game.new(params[:game])
     if game.save
+      current_user.games << game
       redirect '/games'
     else
       flash[:errors] = game.errors.full_messages
       redirect '/games/new'
+    end
+  end
+
+  post '/games/add' do
+    @game = Game.find_by_id(params[:game][:id])
+    if @game && !current_user.games.include?(@game)
+      current_user.games << @game
+      redirect "/games"
+    else
+      redirect "/games/new"
     end
   end
   
